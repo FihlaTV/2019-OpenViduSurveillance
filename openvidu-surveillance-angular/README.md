@@ -1,32 +1,13 @@
-# Openvidu Surveillance
-### To start this app you will need:
-1) To start both Kurento Media Server and Openvidu Server.
-- For the Kurento Media Server you can use this docker image 
-```
-docker run --rm -p 8888:8888 kurento/kurento-media-server:6.12)
-```
-- Then Openvidu Server, which you can get from [OpenVidu Server](https://github.com/OpenVidu/openvidu/tree/master/openvidu-server)
-. The easiest way is to clone, compile and run it using these commands:
-```
-git clone https://github.com/OpenVidu/openvidu.git
-cd openvidu
-mvn -DskipTests=true clean install # Install global dependencies
-cd openvidu-server
-mvn exec:java
-```
-2) Clone, install and run the app
-- Then clone this repo
-```
-git clone https://github.com/OpenVidu/openvidu-tutorials.git
-```
-- You will need angular-cli
-```
-npm install -g @angular/cli@6.2.4
+# OpenViduSurveillance Frontend
 
-```
-- And finally run the tutorial
-```
-cd 2019-OpenViduSurveillance/openvidu-surveillance-angular
-npm install
-ng serve
-```
+## What does this application do?
+This is the frontend of OpenVidu Surveillance. From here you'll be able to communicate with the server to set up your cameras. To see a tutorial on how to use this app check the [general readme](https://github.com/codeurjc-students/2019-OpenViduSurveillance/blob/master/README.md#how-do-i-use-it-)
+
+## How do i use it ?
+To access the visual interface, just go from your browser to where your OpenVidu Surveillance application is deployed. If you're developing the app, by default you can access the frontend at "http://localhost:4200" 
+
+## Components
+The frontend is built using Angular and it has several components organized by app components, interfaces, models and services.
+
+## How do i start this application?
+To see how you deploy the application go to the [general readme](https://github.com/codeurjc-students/2019-OpenViduSurveillance/blob/master/README.md#how-do-i-start-this-application)

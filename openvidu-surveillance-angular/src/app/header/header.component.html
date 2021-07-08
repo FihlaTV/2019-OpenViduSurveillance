@@ -1,14 +1,19 @@
-
 <head>
     <meta charset="utf-8">
-    <title>openvidu-surveillance-angular</title>
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <title>OpenVidu Surveillance</title>
     <base href="/">
 
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Work+Sans:wght@500&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="../app.component.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -21,21 +26,28 @@
     <!-- Bootstrap -->
 </head>
 
-<body>
-
-<nav class="navbar navbar-default">
+<header>
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img class="demo-logo"
-                                                  src="assets/images/openvidu_vert_white_bg_trans_cropped.png"/>
+            <a class="navbar-brand" href="/" id="header-logo"><img class="demo-logo"
+                                                                   src="assets/images/openvidu_vert_white_bg_trans_cropped.png"
+                                                                   alt="OpenVidu logo"/>
                 Surveillance</a>
 
             <a class="navbar-brand nav-icon"
-               href="https://github.com/OpenVidu/openvidu-tutorials/tree/master/openvidu-insecure-angular"
+               href="https://github.com/codeurjc-students/2019-OpenViduSurveillance"
                title="GitHub Repository" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-            <a class="navbar-brand nav-icon" href="http://www.openvidu.io/docs/tutorials/openvidu-insecure-angular/"
+            <a class="navbar-brand nav-icon" href="https://docs.openvidu.io/en/2.14.0/"
                title="Documentation" target="_blank"><i class="fa fa-book" aria-hidden="true"></i></a>
+            <div *ngIf="session">
+                <a class="navbar-brand nav-icon" title="Settings" (click)="settings()"><i id="settingsButton"
+                                                                                          class="fa fa-cog"
+                                                                                          aria-hidden="true"></i></a>
+            </div>
+            <div *ngIf="logged">
+                <a class="navbar-brand nav-icon" title="Sign out" (click)="openDialog()"><i class="fa fa-sign-out"
+                                                                                            aria-hidden="true"></i></a>
+            </div>
         </div>
     </div>
-</nav>
-</body>
+</header>

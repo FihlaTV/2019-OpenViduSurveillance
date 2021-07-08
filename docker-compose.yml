@@ -1,0 +1,58 @@
+# ------------------------------------------------------------------------------
+#
+#    DO NOT MODIFY THIS FILE !!!
+#
+#    Configuration properties should be specified in .env file
+#
+#    Application based on OpenVidu should be specified in
+#    docker-compose.override.yml file
+#
+#    This docker-compose file coordinates all services of OpenVidu CE Plarform.
+#
+#    This file will be overridden when update OpenVidu Platform
+#
+# ------------------------------------------------------------------------------
+
+version: '3.7'
+services:
+    openvidu-server-kms:
+        image: openvidu/openvidu-server-kms:2.12.0
+        ports:
+            - "4443:4443"
+        environment:
+            OPENVIDU_SECRET: MY_SECRET
+
+    mysql-service:
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+          MYSQL_DATABASE: {DATABASE_NAME}
+          MYSQL_PASSWORD: {DATABASE_PASSWORD}
+          MYSQL_USER: {DATABASE_USER}
+          MYSQL_ROOT_PASSWORD: {DATABASE_ROOT_PASSWORD}
+        ports:
+          - "3306:3306"
+      
+    spring-service:
+        container_name: OpenViduBack
+        build: ./OpenViduBackend
+        restart: always
+        depends_on:
+          - mysql-service
+        ports: 
+          - "8080:8080"
+        environment:
+          SPRING_DATASOURCE_URL: jdbc:mysql://mysql-service/openviduDB?createDatabaseIfNotExist=true
+          SPRING_DATASOURCE_USERNAME: {DATABASE_USER}
+          SPRING_DATASOURCE_PASSWORD: {DATABASE_PASSWORD}
+          SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+          SPRING_JPA_HIBERNATE_DDL-AUTO: update
+          OPENVIDU_URL: {OPENVIDU_URL}
+
+    angular-service: 
+        container_name: OpenViduFront  
+        build: ./openvidu-surveillance-angular/ 
+        ports:
+          - '4200:80'
+        environment:
+            OPENVIDUSURVEILLANCE_BACKEND_URL: {BACKEND_URL}

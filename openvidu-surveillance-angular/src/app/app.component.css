@@ -1,45 +1,126 @@
-/*.stream-container {*/
-/*	margin: 5px;*/
-/*	width: 40%;*/
-/*	height: 20%;*/
-/*}*/
-/*#addCameras {*/
-/*	margin: 5px;*/
-/*	float: left;*/
-/*	width: 10%;*/
-/*}*/
-
-/*#communicationButton {*/
-/*	margin-top: 15px;*/
-/*	padding: 5px;*/
-/*}*/
-.total-container{
+/*General*/
+.total-container {
     display: grid;
-    grid-template-rows: 0.5fr 12fr 0.8fr;
+    grid-template-areas: "head" "main" "foot";
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
 }
-.main-container{
+
+app-header {
+    grid-area: head;
+}
+
+app-footer {
+    grid-area: foot;
+}
+
+/*Main Panel*/
+.main-container {
+    grid-area: main;
+    background-color: rgba(87, 123, 98, 0.4) !important;
     display: grid;
     height: 100%;
-    grid-template-columns: 1.2fr 4fr 1.2fr;
+    grid-template-columns: 3fr 1fr;
     /*border-top: 2px solid black;*/
-
 }
+
 div h3 {
     text-align: center;
 }
+
+/*Administration Panel*/
 .demo-cameras {
     /*border-right: 2px solid black;*/
     padding: 0 15px 0 15px;
     position: relative;
-
 }
 
-.main-camera {
-    margin: 0 auto;
-}
-
+/*Camera List*/
 .list-cameras {
-    /*border-left: 2px solid black;*/
+    border-left: rgb(12, 24, 33) solid;
     padding: 0 15px 0 15px;
     position: relative;
+    max-height: 88vh;
+    overflow: auto;
+}
+
+
+/* Join and login dialogs */
+#join-dialog, #login-dialog {
+    max-width: 60%;
+    padding: 30px 40px 30px 40px;
+}
+
+#join-dialog h1 {
+    margin: 10px 0 30px 0;
+}
+
+#form-group label, input, p {
+    font-family: 'Lato', sans-serif;
+
+}
+
+.jumbotron h1, h2, h3, h4, h5, h6 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    font-size: 50px;
+    color: #1d1a1a;
+}
+
+.form-control input {
+    background-color: #dee2e6 !important;
+}
+
+.main-container h1, h2, h3, h4 {
+    font-size: 32px;
+}
+
+/*Main Camera*/
+.main-camera {
+    max-height: 90%;
+}
+
+/*Responsive layout*/
+@media all and (max-width: 1200px) {
+    /*Title*/
+    .jumbotron h1, h2, h3, h4, h5, h6 {
+        font-size: 40px;
+    }
+
+}
+
+@media all and (max-width: 1024px) {
+    /*Camera display for smaller screens*/
+    .main-container {
+        grid-area: main;
+        background-color: rgba(87, 123, 98, 0.4) !important;
+        display: grid;
+        /* height: 100%; */
+        grid-template-rows: 3fr 1fr;
+        grid-template-columns: none;
+    }
+}
+
+@media all and (max-width: 768px) {
+    /*Title*/
+    .jumbotron h1, h2, h3, h4, h5, h6 {
+        font-size: 35px;
+    }
+
+    .list-cameras {
+        max-height: 150px;
+        border: none;
+    }
+}
+
+@media all and (max-width: 500px) {
+    /*Title*/
+    .jumbotron h1, h2, h3, h4, h5, h6 {
+        font-size: 30px;
+    }
+
+    /* Join and login dialogs */
+    #join-dialog, #login-dialog {
+        max-width: 100%;
+    }
 }

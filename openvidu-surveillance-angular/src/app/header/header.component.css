@@ -1,15 +1,35 @@
+/*General*/
 html {
     position: relative;
     min-height: 100%;
 }
 
+header {
+    background-color: rgba(38, 65, 69, 0.8) !important;
+}
+
+/*Overwriting no href style*/
+a:not([href]):not([tabindex]) {
+    color: #bbcac0;
+    cursor: pointer;
+}
+
+a:not([href]):not([tabindex]):hover {
+    transition: color .25s ease-in-out;
+    color: rgb(81, 152, 169);
+}
+
+/*Icon styles*/
 nav {
     height: 50px;
     width: 100%;
     z-index: 1;
-    background-color: #4d4d4d !important;
+    background-color: rgba(1, 31, 39, 0.8) !important;
     border-color: #4d4d4d !important;
     border-top-right-radius: 0 !important;
+    padding: 10px 15px;
+    float: right;
+    font-size: 32px;
     border-top-left-radius: 0 !important;
 }
 
@@ -17,9 +37,19 @@ nav {
     width: 100%;
 }
 
+.navbar-brand {
+    color: #bbcac0;
+}
+
+.navbar-brand:hover {
+    transition: color .25s ease-in-out;
+    color: rgb(81, 152, 169);
+}
+
 .nav-icon {
-    padding: 5px 15px 5px 15px;
+    padding: 10px 15px;
     float: right;
+    font-size: 32px;
 }
 
 nav a {
@@ -39,21 +69,7 @@ nav i.fa:hover {
     color: #a9a9a9;
 }
 
-#main-container {
-    padding-bottom: 80px;
-}
-
-.vertical-center {
-    position: absolute;
-    top: 56%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.horizontal-center {
-    margin: 0 auto;
-}
-
+/*Form display*/
 .form-control {
     color: #0088aa;
     font-weight: bold;
@@ -65,65 +81,11 @@ nav i.fa:hover {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 136, 170, 0.6);
 }
 
-input.btn {
-    font-weight: bold;
-
-}
-
-.btn {
-    font-weight: bold !important;
-    margin-bottom : 5px;
-}
-
-.btn-success {
-    background-color: #06d362 !important;
-    border-color: #06d362;
-}
-
-.btn-success:hover {
-    background-color: #1abd61 !important;
-    border-color: #1abd61;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #4d4d4d;
-}
-
-.footer .text-muted {
-    margin: 20px 0;
-    float: left;
-    color: #ccc;
-}
-
-.openvidu-logo {
-    height: 35px;
-    float: right;
-    margin: 12px 0;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-}
-
-.openvidu-logo:hover {
-    -webkit-filter: grayscale(0.5);
-    filter: grayscale(0.5);
-}
-
 .demo-logo {
     margin: 0;
     height: 22px;
     float: left;
     padding-right: 8px;
-}
-
-a:hover .demo-logo {
-    -webkit-filter: brightness(0.7);
-    filter: brightness(0.7);
 }
 
 #join-dialog h1 {
@@ -132,34 +94,18 @@ a:hover .demo-logo {
     text-align: center;
 }
 
-#img-div {
-    text-align: center;
-    margin-top: 3vh;
-}
-
 #img-div img {
     height: 15%;
 }
+
+/*Join Box*/
 
 #join-dialog label {
     color: #0088aa;
 }
 
-#join-dialog input.btn {
-    margin-top: 15px;
-}
-
-#session-header {
-    margin-bottom: 20px;
-}
-
-#session-title {
-    display: inline-block;
-}
-
-#buttonLeaveSession {
-    float: right;
-    margin-top: 20px;
+#join-dialog label, p, button {
+    font-family: 'Lato', sans-serif !important;
 }
 
 #video-container video {
@@ -178,12 +124,7 @@ a:hover .demo-logo {
     border-bottom-right-radius: 4px;
 }
 
-video {
-    width: 100%;
-    height: auto;
-}
-
-#main-video p {
+#deo p {
     position: absolute;
     display: inline-block;
     background: #f8f8f8;
@@ -217,13 +158,29 @@ video {
     height: 180px;
 }
 
+/*Pop up dialog */
+
+button {
+    margin: 0 auto;
+}
+#exitButton {
+    color: black;
+    text-decoration: none;
+}
+
+#exitButton:hover {
+    transition: background-color .5s ease-in-out;
+    background-color: rgba(236, 188, 192, 0.8);
+    color: black !important;
+    text-decoration: none;
+    font-weight: bold;
+}
 
 /* xs ans md screen resolutions*/
 
-@media screen and (max-width: 991px) {
-    .vertical-center {
-        width: 85%;
-        padding-top: 10px;
-        top: 57%;
+@media screen and (max-width: 768px) {
+    #header-logo {
+        display: inline-block;
+        width: 100%;
     }
 }

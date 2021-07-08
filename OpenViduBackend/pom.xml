@@ -8,15 +8,22 @@
         <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>urjc.ovback</groupId>
+    <artifactId>openViduBackend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>openViduBackend</name>
+    <description>Backend for OpenVidu Surveillance</description>
 
     <properties>
+        <start-class>urjc.ovback.openViduBackend.Application</start-class>
         <java.version>1.8</java.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>Jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
 
@@ -51,10 +58,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.10</version>
@@ -77,8 +80,40 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
-    </dependencies>
+        <!-- https://mvnrepository.com/artifact/be.teletask.onvif/onvif -->
+        <dependency>
+            <groupId>be.teletask.onvif</groupId>
+            <artifactId>onvif</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>de.onvif.soap</groupId>
+            <artifactId>de.onvif.soap</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${basedir}/onvif-2016-03-16.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
